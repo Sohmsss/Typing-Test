@@ -1,0 +1,31 @@
+body {
+    background-color: #1c1c1c;
+    color: #f8f9fa;
+  }
+  
+  input, button {
+    border: none;
+  }
+  
+  #input {
+    color: #f8f9fa;
+    background-color: #343a40;
+  }
+  
+  #input::placeholder {
+    color: #ced4da;
+  }
+  
+  #start {
+    background-color: #17a2b8;
+    color: #f8f9fa;
+  }
+  
+  #start:hover {
+    background-color: #138496;
+  }
+  
+  #sentence, #result {
+    color: #f8f9fa;
+  }
+  
