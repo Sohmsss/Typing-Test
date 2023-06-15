@@ -6,16 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typing Test</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
 </head>
 
-<body>
+<body class="bg-dark text-light">
     <div class="container">
         <h1 class="text-center mt-5">Typing Test</h1>
         <div class="text-center">
             <p id="sentence" class="mt-5"></p>
-            <input type="text" id="input" class="form-control mt-3" placeholder="Start typing..." disabled>
+            <input type="text" id="input" class="form-control mt-3 bg-dark text-light" placeholder="Start typing..."
+                disabled>
             <button id="start" class="btn btn-primary mt-3">Start</button>
             <p id="result" class="mt-5"></p>
+            <p id="timer" class="mt-3"></p>
         </div>
     </div>
     <script src="typingTest.js"></script>
