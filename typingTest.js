@@ -13,14 +13,16 @@ let timer = null; // Variable to hold the timer
 
 // Function to fetch random sentence
 async function fetchSentence() {
-  sentence = '';
-  while (sentence.split(' ').length < 20) {
+  let sentenceArray = [];
+  while (sentenceArray.join(' ').split(' ').length < 20) {
     const response = await fetch('https://api.quotable.io/random');
     const data = await response.json();
-    sentence += ' ' + data.content;
+    sentenceArray.push(data.content);
   }
+  sentence = sentenceArray.join(' ');
   sentenceElement.textContent = sentence;
 }
+
 
 // Event when start button is clicked
 startButton.addEventListener('click', () => {
@@ -40,13 +42,41 @@ startButton.addEventListener('click', () => {
 // Event when user types in the input field
 inputElement.addEventListener('input', () => {
   typedText = inputElement.value;
-  if (typedText === sentence.trim()) { //trim to remove the leading space
+  checkLetter(typedText, typedText.length - 1);
+  if (typedText.trim() === sentence.trim()) {
     inputElement.disabled = true;
     endTime = new Date();
     calculateResult();
     clearInterval(timer); // Clear the timer
   }
 });
+
+// Function to check each typed letter
+function checkLetter(typedText, typedPosition) {
+  const sentenceArray = sentence.split('');
+
+  for (let i = 0; i <= typedPosition; i++) {
+    if (typedText[i] === sentenceArray[i]) {
+      sentenceArray[i] = `<span class="correct">${typedText[i]}</span>`;
+    } else {
+      sentenceArray[i] = `<span class="wrong">${typedText[i]}</span>`;
+    }
+  }
+  sentenceElement.innerHTML = sentenceArray.join('');  // replace the original text with the marked up text
+}
+
+// Event when user types in the input field
+inputElement.addEventListener('input', () => {
+  typedText = inputElement.value;
+  checkLetter(typedText, typedText.length - 1);
+  if (typedText.trim() === sentence.trim()) {
+    inputElement.disabled = true;
+    endTime = new Date();
+    calculateResult();
+    clearInterval(timer); // Clear the timer
+  }
+});
+
 
 // Function to calculate the result
 function calculateResult() {
