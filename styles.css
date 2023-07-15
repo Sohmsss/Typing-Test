@@ -42,10 +42,11 @@ button {
 }
 
 #start {
-  width: 100%;
+  width: 20%;
   background-color: #17a2b8;
   color: #f8f9fa;
   margin-bottom: 20px;
+  border: none;
 }
 
 #start:hover {
